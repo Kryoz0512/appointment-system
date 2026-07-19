@@ -1,0 +1,35 @@
+/* Custom CSS to supplement Tailwind CSS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8fafc; /* slate-50 */
+    color: #1e293b; /* slate-800 */
+}
+
+/* Custom Striped Pattern for Blocked/Weekend Dates */
+.strip-pattern {
+    background-image: repeating-linear-gradient(
+        45deg,
+        #f1f5f9, /* slate-100 */
+        #f1f5f9 10px,
+        #e2e8f0 10px, /* slate-200 */
+        #e2e8f0 20px
+    );
+}
+
+/* Fade in animation for dynamic elements */
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Modal Overlay */
+.modal-overlay {
+    background-color: rgba(15, 23, 42, 0.5); /* slate-900 with opacity */
+    backdrop-filter: blur(4px);
+}
