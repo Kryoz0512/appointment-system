@@ -6,6 +6,12 @@ header('Content-Type: application/json');
 
 $action = $_GET['action'] ?? 'list';
 
+if (!isset($_SESSION['user_id'])) {
+    http_response_code(401);
+    echo json_encode(['success' => false, 'error' => 'Unauthorized']);
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && $action === 'list') {
     // Both User and Admin can fetch transactions
     $stmt = $pdo->query("SELECT * FROM transactions");
