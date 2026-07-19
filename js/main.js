@@ -12,7 +12,7 @@ async function apiCall(endpoint, method = 'GET', body = null) {
         if (body) {
             options.body = JSON.stringify(body);
         }
-        
+
         const response = await fetch(`${API_BASE}${endpoint}`, options);
         if (!response.ok && response.status === 401) {
             window.location.href = '/appointment_system/login.php'; // Redirect to login on unauthorized
@@ -28,13 +28,12 @@ async function apiCall(endpoint, method = 'GET', body = null) {
 // Utility: Show a simple toast notification
 function showToast(message, type = 'success') {
     const toast = document.createElement('div');
-    toast.className = `fixed bottom-4 right-4 px-6 py-3 rounded-lg shadow-lg text-white fade-in z-50 ${
-        type === 'success' ? 'bg-green-600' : 'bg-red-600'
-    }`;
+    toast.className = `fixed bottom-4 right-4 px-6 py-3 rounded-lg shadow-lg text-white fade-in z-50 ${type === 'success' ? 'bg-green-600' : 'bg-red-600'
+        }`;
     toast.textContent = message;
-    
+
     document.body.appendChild(toast);
-    
+
     setTimeout(() => {
         toast.style.opacity = '0';
         toast.style.transition = 'opacity 0.3s ease';
