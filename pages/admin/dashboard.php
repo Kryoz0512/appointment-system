@@ -15,36 +15,36 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Admin') {
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="../../css/index.css">
 </head>
-<body class="bg-slate-50 flex h-screen overflow-hidden">
-    
+<body class="bg-zinc-900 flex h-screen overflow-hidden">
+
     <?php include '../../includes/admin_sidebar.php'; ?>
 
     <!-- Main Content Area -->
-    <main class="flex-1 overflow-y-auto p-8 lg:p-12">
-        
+    <main class="flex-1 overflow-y-auto p-8 lg:p-12 bg-zinc-900">
+
         <!-- Appointments View -->
         <div class="fade-in max-w-6xl mx-auto">
             <div class="flex items-center justify-between mb-6">
                 <div>
-                    <h2 class="text-2xl font-bold text-slate-800">All Appointments</h2>
-                    <p class="text-slate-500 mt-1">Manage and update user appointment statuses</p>
+                    <h2 class="text-2xl font-bold text-zinc-50">All Appointments</h2>
+                    <p class="text-zinc-400 mt-1">Manage and update user appointment statuses</p>
                 </div>
-                <button onclick="loadAppointments()" class="px-5 py-2.5 bg-white text-indigo-600 border border-indigo-200 hover:bg-indigo-50 hover:border-indigo-300 font-semibold rounded-xl transition-all shadow-sm text-sm flex items-center">
+                <button onclick="loadAppointments()" class="px-5 py-2.5 bg-zinc-800 text-[#D4AF37] border border-[#D4AF37]/30 hover:bg-zinc-700 hover:border-[#D4AF37]/60 font-semibold rounded-xl transition-all shadow-sm text-sm flex items-center">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
                     Refresh List
                 </button>
             </div>
 
             <!-- Filters & Search -->
-            <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 mb-6 flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-4">
+            <div class="bg-zinc-800 p-4 rounded-2xl shadow-sm border border-zinc-700 mb-6 flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-4">
                 <div class="flex-1 relative">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        <svg class="w-5 h-5 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                     </div>
-                    <input type="text" id="searchInput" placeholder="Search email or transaction..." class="w-full pl-10 p-2.5 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all">
+                    <input type="text" id="searchInput" placeholder="Search email or transaction..." class="w-full pl-10 p-2.5 bg-zinc-900 border border-zinc-700 text-zinc-100 rounded-xl text-sm focus:ring-2 focus:ring-[#D4AF37] focus:outline-none transition-all">
                 </div>
                 <div class="w-full md:w-48">
-                    <select id="statusFilter" class="w-full p-2.5 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all text-slate-700 bg-white">
+                    <select id="statusFilter" class="w-full p-2.5 bg-zinc-900 border border-zinc-700 rounded-xl text-sm focus:ring-2 focus:ring-[#D4AF37] focus:outline-none transition-all text-zinc-200">
                         <option value="">All Statuses</option>
                         <option value="Pending">Pending</option>
                         <option value="Confirmed">Confirmed</option>
@@ -54,17 +54,17 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Admin') {
                     </select>
                 </div>
                 <div class="w-full md:w-48">
-                    <input type="date" id="dateFilter" class="w-full p-2.5 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all text-slate-700">
+                    <input type="date" id="dateFilter" class="w-full p-2.5 bg-zinc-900 border border-zinc-700 rounded-xl text-sm focus:ring-2 focus:ring-[#D4AF37] focus:outline-none transition-all text-zinc-200">
                 </div>
-                <button onclick="resetFilters()" class="w-full md:w-auto px-5 py-2.5 text-slate-600 bg-slate-100 hover:bg-slate-200 font-medium rounded-xl transition-colors text-sm">
+                <button onclick="resetFilters()" class="w-full md:w-auto px-5 py-2.5 text-zinc-300 bg-zinc-700 hover:bg-zinc-600 font-medium rounded-xl transition-colors text-sm">
                     Clear
                 </button>
             </div>
-            
-            <section class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+
+            <section class="bg-zinc-800 rounded-2xl shadow-sm border border-zinc-700 overflow-hidden">
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left text-sm text-slate-600">
-                        <thead class="bg-slate-50/80 border-b border-slate-200 text-slate-500 font-semibold tracking-wide uppercase text-xs">
+                    <table class="w-full text-left text-sm text-zinc-300">
+                        <thead class="bg-zinc-900/60 border-b border-zinc-700 text-zinc-400 font-semibold tracking-wide uppercase text-xs">
                             <tr>
                                 <th class="px-6 py-5">Date & Time</th>
                                 <th class="px-6 py-5">User Account</th>
@@ -73,17 +73,17 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Admin') {
                                 <th class="px-6 py-5 text-right">Actions</th>
                             </tr>
                         </thead>
-                        <tbody id="appointmentsTableBody" class="divide-y divide-slate-100">
-                            <tr><td colspan="5" class="px-6 py-12 text-center text-slate-400">Loading appointments...</td></tr>
+                        <tbody id="appointmentsTableBody" class="divide-y divide-zinc-700">
+                            <tr><td colspan="5" class="px-6 py-12 text-center text-zinc-500">Loading appointments...</td></tr>
                         </tbody>
                     </table>
                 </div>
 
                 <!-- Pagination -->
-                <div class="px-6 py-4 border-t border-slate-200 bg-slate-50 flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <div class="flex items-center space-x-3 text-sm text-slate-500">
+                <div class="px-6 py-4 border-t border-zinc-700 bg-zinc-900/40 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 text-sm text-zinc-400">
                         <span>Show</span>
-                        <select id="entriesLimit" class="p-1.5 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all text-slate-700 bg-white">
+                        <select id="entriesLimit" class="p-1.5 bg-zinc-900 border border-zinc-700 rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:outline-none transition-all text-zinc-200">
                             <option value="10">10</option>
                             <option value="25">25</option>
                             <option value="50">50</option>
@@ -91,13 +91,13 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Admin') {
                             <option value="100">100</option>
                         </select>
                         <span>entries</span>
-                        <span class="pl-2 border-l border-slate-300">
-                            Showing <span class="font-bold text-indigo-600" id="pageInfo">Page 1 of 1</span> (<span id="totalRowsInfo">0</span> total records)
+                        <span class="pl-2 border-l border-zinc-600">
+                            Showing <span class="font-bold text-[#D4AF37]" id="pageInfo">Page 1 of 1</span> (<span id="totalRowsInfo">0</span> total records)
                         </span>
                     </div>
                     <div class="flex space-x-2">
-                        <button id="prevPageBtn" onclick="changePage(-1)" class="px-4 py-2 border border-slate-200 text-slate-600 bg-white hover:bg-slate-50 rounded-lg text-sm font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm">Previous</button>
-                        <button id="nextPageBtn" onclick="changePage(1)" class="px-4 py-2 border border-slate-200 text-slate-600 bg-white hover:bg-slate-50 rounded-lg text-sm font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm">Next</button>
+                        <button id="prevPageBtn" onclick="changePage(-1)" class="px-4 py-2 border border-zinc-700 text-zinc-300 bg-zinc-800 hover:bg-zinc-700 rounded-lg text-sm font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm">Previous</button>
+                        <button id="nextPageBtn" onclick="changePage(1)" class="px-4 py-2 border border-zinc-700 text-zinc-300 bg-zinc-800 hover:bg-zinc-700 rounded-lg text-sm font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm">Next</button>
                     </div>
                 </div>
             </section>
@@ -107,18 +107,18 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Admin') {
 
     <!-- Modal Template for Action (Hidden by default) -->
     <div id="actionModal" class="fixed inset-0 modal-overlay z-50 hidden flex items-center justify-center p-4 fade-in">
-        <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 relative">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 bg-slate-50 hover:bg-slate-100 p-1.5 rounded-lg transition-colors">
+        <div class="bg-zinc-800 rounded-2xl shadow-xl max-w-md w-full p-6 relative border border-zinc-700">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-zinc-400 hover:text-zinc-200 bg-zinc-700 hover:bg-zinc-600 p-1.5 rounded-lg transition-colors">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
-            <h3 class="text-xl font-bold text-slate-800 mb-6" id="modalTitle">Manage Appointment</h3>
-            
+            <h3 class="text-xl font-bold text-zinc-50 mb-6" id="modalTitle">Manage Appointment</h3>
+
             <form id="actionForm" class="space-y-5">
                 <input type="hidden" id="modalApptId">
                 <div id="modalContent"></div>
-                <div class="flex justify-end space-x-3 mt-8 pt-4 border-t border-slate-100">
-                    <button type="button" onclick="closeModal()" class="px-5 py-2.5 text-slate-600 font-medium hover:bg-slate-100 rounded-xl transition-colors">Cancel</button>
-                    <button type="submit" class="px-5 py-2.5 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 transition-colors shadow-sm" id="modalSubmitBtn">Save Changes</button>
+                <div class="flex justify-end space-x-3 mt-8 pt-4 border-t border-zinc-700">
+                    <button type="button" onclick="closeModal()" class="px-5 py-2.5 text-zinc-300 font-medium hover:bg-zinc-700 rounded-xl transition-colors">Cancel</button>
+                    <button type="submit" class="px-5 py-2.5 bg-[#D4AF37] text-zinc-900 font-semibold rounded-xl hover:bg-[#C29A2B] transition-colors shadow-sm" id="modalSubmitBtn">Save Changes</button>
                 </div>
             </form>
         </div>
@@ -174,10 +174,10 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Admin') {
             const status = document.getElementById('statusFilter').value;
             const date = document.getElementById('dateFilter').value;
             const limit = document.getElementById('entriesLimit').value;
-            
+
             const tbody = document.getElementById('appointmentsTableBody');
-            tbody.innerHTML = '<tr><td colspan="5" class="px-6 py-12 text-center text-slate-400">Loading appointments...</td></tr>';
-            
+            tbody.innerHTML = '<tr><td colspan="5" class="px-6 py-12 text-center text-zinc-500">Loading appointments...</td></tr>';
+
             const params = new URLSearchParams();
             params.append('page', currentPage);
             params.append('limit', limit);
@@ -189,61 +189,61 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Admin') {
             window.history.replaceState(null, '', '?' + params.toString());
 
             const res = await apiCall('appointments.php?action=list_admin&' + params.toString());
-            
+
             if(res && res.success) {
                 tbody.innerHTML = '';
-                
+
                 // Update Pagination UI
                 currentPage = parseInt(res.meta.current_page) || 1;
                 totalPages = parseInt(res.meta.total_pages) || 1;
                 document.getElementById('pageInfo').textContent = `Page ${currentPage} of ${totalPages}`;
                 document.getElementById('totalRowsInfo').textContent = res.meta.total_rows || 0;
-                
+
                 document.getElementById('prevPageBtn').disabled = (currentPage <= 1);
                 document.getElementById('nextPageBtn').disabled = (currentPage >= totalPages);
 
                 if(res.data.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="5" class="px-6 py-12 text-center text-slate-400">No appointments found matching your filters.</td></tr>';
+                    tbody.innerHTML = '<tr><td colspan="5" class="px-6 py-12 text-center text-zinc-500">No appointments found matching your filters.</td></tr>';
                     return;
                 }
-                
+
                 res.data.forEach(a => {
-                    let statusColor = 'bg-green-100 text-green-700 border-green-200';
+                    let statusColor = 'bg-green-500/10 text-green-400 border-green-500/30';
                     let statusIcon = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>';
                     let displayStatus = a.Status;
-                    
+
                     if(a.Status === 'Pending') {
-                        statusColor = 'bg-yellow-50 text-yellow-700 border-yellow-200';
+                        statusColor = 'bg-yellow-500/10 text-yellow-400 border-yellow-500/30';
                         statusIcon = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>';
                     } else if(a.Status === 'Cancelled') {
-                        statusColor = 'bg-red-50 text-red-700 border-red-200';
+                        statusColor = 'bg-red-500/10 text-red-400 border-red-500/30';
                         statusIcon = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>';
                     } else if(a.Status === 'Pending_Reschedule') {
-                        statusColor = 'bg-orange-50 text-orange-700 border-orange-200';
+                        statusColor = 'bg-orange-500/10 text-orange-400 border-orange-500/30';
                         statusIcon = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>';
                         displayStatus = 'Waiting on User';
                     } else if(a.Status === 'Completed') {
-                        statusColor = 'bg-blue-50 text-blue-700 border-blue-200';
+                        statusColor = 'bg-blue-500/10 text-blue-400 border-blue-500/30';
                         statusIcon = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>';
                     }
 
                     const tr = document.createElement('tr');
-                    tr.className = "hover:bg-slate-50 transition-colors group";
+                    tr.className = "hover:bg-zinc-700/50 transition-colors group";
                     tr.innerHTML = `
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="font-bold text-slate-800">${formatDate(a.ApptDate)}</div>
-                            <div class="text-xs font-medium text-indigo-600 mt-1">${formatTime(a.ApptTime)}</div>
+                            <div class="font-bold text-zinc-100">${formatDate(a.ApptDate)}</div>
+                            <div class="text-xs font-medium text-[#D4AF37] mt-1">${formatTime(a.ApptTime)}</div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex items-center">
-                                <div class="w-8 h-8 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center font-bold text-xs mr-3">
+                                <div class="w-8 h-8 rounded-full bg-zinc-700 text-zinc-300 flex items-center justify-center font-bold text-xs mr-3">
                                     ${a.Email.charAt(0).toUpperCase()}
                                 </div>
-                                <span class="text-slate-800 font-medium">${a.Email}</span>
+                                <span class="text-zinc-100 font-medium">${a.Email}</span>
                             </div>
                         </td>
                         <td class="px-6 py-4">
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-slate-100 text-slate-800 border border-slate-200">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-zinc-700 text-zinc-200 border border-zinc-600">
                                 ${a.TransactionName}
                             </span>
                         </td>
@@ -255,31 +255,31 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Admin') {
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right">
                             ${(a.Status === 'Pending') ? `
-                                <button onclick="markAsConfirmed(${a.AppointmentID})" class="inline-flex items-center px-3 py-1.5 bg-green-50 hover:bg-green-600 text-green-700 hover:text-white border border-green-200 hover:border-green-600 text-xs font-bold rounded-lg mr-2 transition-all shadow-sm">
+                                <button onclick="markAsConfirmed(${a.AppointmentID})" class="inline-flex items-center px-3 py-1.5 bg-green-500/10 hover:bg-green-600 text-green-400 hover:text-white border border-green-500/30 hover:border-green-600 text-xs font-bold rounded-lg mr-2 transition-all shadow-sm">
                                     <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                     Accept
                                 </button>
-                                <button onclick="openModal('reschedule', ${a.AppointmentID})" class="inline-flex items-center px-3 py-1.5 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 text-xs font-semibold rounded-lg mr-2 transition-all shadow-sm">
+                                <button onclick="openModal('reschedule', ${a.AppointmentID})" class="inline-flex items-center px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-700 text-xs font-semibold rounded-lg mr-2 transition-all shadow-sm">
                                     Reschedule
                                 </button>
-                                <button onclick="openModal('cancel', ${a.AppointmentID})" class="inline-flex items-center px-3 py-1.5 bg-white hover:bg-red-50 text-red-600 border border-slate-200 hover:border-red-200 text-xs font-semibold rounded-lg transition-all shadow-sm">
+                                <button onclick="openModal('cancel', ${a.AppointmentID})" class="inline-flex items-center px-3 py-1.5 bg-zinc-800 hover:bg-red-500/10 text-red-400 border border-zinc-700 hover:border-red-500/30 text-xs font-semibold rounded-lg transition-all shadow-sm">
                                     Cancel
                                 </button>
                             ` : ''}
                             ${(a.Status === 'Confirmed') ? `
-                                <button onclick="markAsCompleted(${a.AppointmentID})" class="inline-flex items-center px-3 py-1.5 bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white border border-blue-200 hover:border-blue-600 text-xs font-bold rounded-lg mr-2 transition-all shadow-sm">
+                                <button onclick="markAsCompleted(${a.AppointmentID})" class="inline-flex items-center px-3 py-1.5 bg-blue-500/10 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500/30 hover:border-blue-600 text-xs font-bold rounded-lg mr-2 transition-all shadow-sm">
                                     <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                     Done
                                 </button>
-                                <button onclick="openModal('reschedule', ${a.AppointmentID})" class="inline-flex items-center px-3 py-1.5 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 text-xs font-semibold rounded-lg mr-2 transition-all shadow-sm">
+                                <button onclick="openModal('reschedule', ${a.AppointmentID})" class="inline-flex items-center px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-700 text-xs font-semibold rounded-lg mr-2 transition-all shadow-sm">
                                     Reschedule
                                 </button>
-                                <button onclick="openModal('cancel', ${a.AppointmentID})" class="inline-flex items-center px-3 py-1.5 bg-white hover:bg-red-50 text-red-600 border border-slate-200 hover:border-red-200 text-xs font-semibold rounded-lg transition-all shadow-sm">
+                                <button onclick="openModal('cancel', ${a.AppointmentID})" class="inline-flex items-center px-3 py-1.5 bg-zinc-800 hover:bg-red-500/10 text-red-400 border border-zinc-700 hover:border-red-500/30 text-xs font-semibold rounded-lg transition-all shadow-sm">
                                     Cancel
                                 </button>
                             ` : ''}
                             ${(a.Status === 'Pending_Reschedule') ? `
-                                <button onclick="openModal('cancel', ${a.AppointmentID})" class="inline-flex items-center px-3 py-1.5 bg-white hover:bg-red-50 text-red-600 border border-slate-200 hover:border-red-200 text-xs font-semibold rounded-lg transition-all shadow-sm">
+                                <button onclick="openModal('cancel', ${a.AppointmentID})" class="inline-flex items-center px-3 py-1.5 bg-zinc-800 hover:bg-red-500/10 text-red-400 border border-zinc-700 hover:border-red-500/30 text-xs font-semibold rounded-lg transition-all shadow-sm">
                                     Cancel
                                 </button>
                             ` : ''}
@@ -288,7 +288,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Admin') {
                     tbody.appendChild(tr);
                 });
             } else {
-                tbody.innerHTML = '<tr><td colspan="5" class="px-6 py-12 text-center text-red-500">Failed to load appointments.</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="5" class="px-6 py-12 text-center text-red-400">Failed to load appointments.</td></tr>';
             }
         }
 
@@ -298,16 +298,16 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Admin') {
             currentModalAction = action;
             document.getElementById('modalApptId').value = id;
             document.getElementById('actionModal').classList.remove('hidden');
-            
+
             const content = document.getElementById('modalContent');
             if(action === 'cancel') {
                 document.getElementById('modalTitle').textContent = 'Cancel Appointment';
                 content.innerHTML = `
-                    <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6 rounded-r-lg">
-                        <p class="text-sm text-red-700">You are about to cancel this appointment. This action cannot be undone.</p>
+                    <div class="bg-red-500/10 border-l-4 border-red-500 p-4 mb-6 rounded-r-lg">
+                        <p class="text-sm text-red-400">You are about to cancel this appointment. This action cannot be undone.</p>
                     </div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-2">Reason for Cancellation</label>
-                    <textarea id="modalReason" required placeholder="e.g. User requested via phone" class="w-full p-4 border border-slate-200 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all outline-none resize-none" rows="3"></textarea>
+                    <label class="block text-sm font-semibold text-zinc-300 mb-2">Reason for Cancellation</label>
+                    <textarea id="modalReason" required placeholder="e.g. User requested via phone" class="w-full p-4 bg-zinc-900 border border-zinc-700 text-zinc-100 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all outline-none resize-none" rows="3"></textarea>
                 `;
                 const submitBtn = document.getElementById('modalSubmitBtn');
                 submitBtn.textContent = 'Confirm Cancellation';
@@ -315,23 +315,23 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Admin') {
             } else if (action === 'reschedule') {
                 document.getElementById('modalTitle').textContent = 'Reschedule Appointment';
                 content.innerHTML = `
-                    <div class="bg-indigo-50 border-l-4 border-indigo-500 p-4 mb-6 rounded-r-lg">
-                        <p class="text-sm text-indigo-700">Select a new date and time for this user's appointment.</p>
+                    <div class="bg-[#D4AF37]/10 border-l-4 border-[#D4AF37] p-4 mb-6 rounded-r-lg">
+                        <p class="text-sm text-[#D4AF37]">Select a new date and time for this user's appointment.</p>
                     </div>
                     <div class="space-y-4">
                         <div>
-                            <label class="block text-sm font-semibold text-slate-700 mb-2">New Date</label>
-                            <input type="date" id="modalNewDate" required class="w-full p-3.5 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all outline-none text-slate-700">
+                            <label class="block text-sm font-semibold text-zinc-300 mb-2">New Date</label>
+                            <input type="date" id="modalNewDate" required class="w-full p-3.5 bg-zinc-900 border border-zinc-700 rounded-xl focus:ring-2 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition-all outline-none text-zinc-100">
                         </div>
                         <div>
-                            <label class="block text-sm font-semibold text-slate-700 mb-2">New Time</label>
-                            <input type="time" id="modalNewTime" required class="w-full p-3.5 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all outline-none text-slate-700">
+                            <label class="block text-sm font-semibold text-zinc-300 mb-2">New Time</label>
+                            <input type="time" id="modalNewTime" required class="w-full p-3.5 bg-zinc-900 border border-zinc-700 rounded-xl focus:ring-2 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition-all outline-none text-zinc-100">
                         </div>
                     </div>
                 `;
                 const submitBtn = document.getElementById('modalSubmitBtn');
                 submitBtn.textContent = 'Save New Schedule';
-                submitBtn.className = 'px-5 py-2.5 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 transition-all shadow-sm hover:shadow';
+                submitBtn.className = 'px-5 py-2.5 bg-[#D4AF37] text-zinc-900 font-semibold rounded-xl hover:bg-[#C29A2B] transition-all shadow-sm hover:shadow';
             }
         }
 
@@ -344,7 +344,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Admin') {
             e.preventDefault();
             const id = document.getElementById('modalApptId').value;
             let payload = { id: id };
-            
+
             if(currentModalAction === 'cancel') {
                 payload.status = 'Cancelled';
                 payload.reason = document.getElementById('modalReason').value;

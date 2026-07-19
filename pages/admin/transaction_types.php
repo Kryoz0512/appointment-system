@@ -14,37 +14,37 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Admin') {
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="../../css/index.css">
 </head>
-<body class="bg-slate-50 flex h-screen overflow-hidden">
-    
+<body class="bg-zinc-900 flex h-screen overflow-hidden">
+
     <?php include '../../includes/admin_sidebar.php'; ?>
 
-    <main class="flex-1 overflow-y-auto p-8 lg:p-12">
+    <main class="flex-1 overflow-y-auto p-8 lg:p-12 bg-zinc-900">
         <div class="fade-in max-w-5xl mx-auto">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
                 <div>
-                    <h2 class="text-2xl font-bold text-slate-800">Transaction Types</h2>
-                    <p class="text-slate-500 mt-1">Manage transaction types, their requirements, and daily quotas.</p>
+                    <h2 class="text-2xl font-bold text-zinc-50">Transaction Types</h2>
+                    <p class="text-zinc-400 mt-1">Manage transaction types, their requirements, and daily quotas.</p>
                 </div>
-                <button onclick="openModal()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 px-5 rounded-xl transition-all shadow-sm flex items-center">
+                <button onclick="openModal()" class="bg-[#D4AF37] hover:bg-[#C29A2B] text-zinc-900 font-medium py-2.5 px-5 rounded-xl transition-all shadow-sm flex items-center">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
                     Create New
                 </button>
             </div>
-            
-            <section class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+
+            <section class="bg-zinc-800 rounded-2xl shadow-sm border border-zinc-700 overflow-hidden">
                 <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse">
                         <thead>
-                            <tr class="bg-slate-50 border-b border-slate-200 text-sm font-semibold text-slate-500 uppercase tracking-wider">
+                            <tr class="bg-zinc-900/60 border-b border-zinc-700 text-sm font-semibold text-zinc-400 uppercase tracking-wider">
                                 <th class="p-4">Transaction Name</th>
                                 <th class="p-4">Requirements</th>
                                 <th class="p-4 text-center">Daily Quota</th>
                                 <th class="p-4 text-right">Actions</th>
                             </tr>
                         </thead>
-                        <tbody id="transactionList" class="divide-y divide-slate-200">
+                        <tbody id="transactionList" class="divide-y divide-zinc-700">
                             <tr>
-                                <td colspan="4" class="p-4 text-sm text-slate-500 text-center">Loading transactions...</td>
+                                <td colspan="4" class="p-4 text-sm text-zinc-400 text-center">Loading transactions...</td>
                             </tr>
                         </tbody>
                     </table>
@@ -54,31 +54,31 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Admin') {
     </main>
 
     <!-- Modal for Create/Edit -->
-    <div id="transactionModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center opacity-0 transition-opacity duration-300">
-        <div class="bg-white rounded-2xl shadow-xl w-full max-w-lg mx-4 transform scale-95 transition-transform duration-300" id="modalContent">
-            <div class="p-6 border-b border-slate-100 flex justify-between items-center">
-                <h3 class="text-xl font-bold text-slate-800" id="modalTitle">Create Transaction Type</h3>
-                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600 transition-colors">
+    <div id="transactionModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center opacity-0 transition-opacity duration-300">
+        <div class="bg-zinc-800 rounded-2xl shadow-xl w-full max-w-lg mx-4 transform scale-95 transition-transform duration-300 border border-zinc-700" id="modalContent">
+            <div class="p-6 border-b border-zinc-700 flex justify-between items-center">
+                <h3 class="text-xl font-bold text-zinc-50" id="modalTitle">Create Transaction Type</h3>
+                <button onclick="closeModal()" class="text-zinc-400 hover:text-zinc-200 transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
             </div>
             <form id="transactionForm" onsubmit="handleFormSubmit(event)" class="p-6 space-y-4">
                 <input type="hidden" id="transactionId">
                 <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">Transaction Name</label>
-                    <input type="text" id="transactionName" required class="w-full p-2.5 border border-slate-200 rounded-xl text-slate-800 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none transition-all">
+                    <label class="block text-sm font-medium text-zinc-300 mb-1">Transaction Name</label>
+                    <input type="text" id="transactionName" required class="w-full p-2.5 bg-zinc-900 border border-zinc-700 text-zinc-100 rounded-xl focus:ring-2 focus:ring-[#D4AF37] focus:border-[#D4AF37] focus:outline-none transition-all">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">Requirements (Description)</label>
-                    <textarea id="transactionRequirements" rows="4" class="w-full p-2.5 border border-slate-200 rounded-xl text-slate-800 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none transition-all"></textarea>
+                    <label class="block text-sm font-medium text-zinc-300 mb-1">Requirements (Description)</label>
+                    <textarea id="transactionRequirements" rows="4" class="w-full p-2.5 bg-zinc-900 border border-zinc-700 text-zinc-100 rounded-xl focus:ring-2 focus:ring-[#D4AF37] focus:border-[#D4AF37] focus:outline-none transition-all"></textarea>
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">Daily Quota</label>
-                    <input type="number" id="transactionQuota" required min="0" class="w-full p-2.5 border border-slate-200 rounded-xl text-slate-800 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none transition-all">
+                    <label class="block text-sm font-medium text-zinc-300 mb-1">Daily Quota</label>
+                    <input type="number" id="transactionQuota" required min="0" class="w-full p-2.5 bg-zinc-900 border border-zinc-700 text-zinc-100 rounded-xl focus:ring-2 focus:ring-[#D4AF37] focus:border-[#D4AF37] focus:outline-none transition-all">
                 </div>
                 <div class="pt-4 flex justify-end space-x-3">
-                    <button type="button" onclick="closeModal()" class="px-5 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-xl transition-colors">Cancel</button>
-                    <button type="submit" class="px-5 py-2.5 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-sm transition-colors">Save Transaction</button>
+                    <button type="button" onclick="closeModal()" class="px-5 py-2.5 text-sm font-medium text-zinc-300 hover:bg-zinc-700 rounded-xl transition-colors">Cancel</button>
+                    <button type="submit" class="px-5 py-2.5 text-sm font-medium text-zinc-900 bg-[#D4AF37] hover:bg-[#C29A2B] rounded-xl shadow-sm transition-colors">Save Transaction</button>
                 </div>
             </form>
         </div>
@@ -99,28 +99,32 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Admin') {
                 transactions = res.data;
                 tbody.innerHTML = '';
                 if (transactions.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="4" class="p-4 text-sm text-slate-500 text-center">No transactions found.</td></tr>';
+                    tbody.innerHTML = '<tr><td colspan="4" class="p-4 text-sm text-zinc-400 text-center">No transactions found.</td></tr>';
                     return;
                 }
-                
+
                 transactions.forEach(t => {
                     const tr = document.createElement('tr');
-                    tr.className = 'hover:bg-slate-50 transition-colors';
+                    tr.className = 'hover:bg-zinc-700/50 transition-colors';
                     tr.innerHTML = `
-                        <td class="p-4 font-medium text-slate-800">${escapeHtml(t.TransactionName)}</td>
-                        <td class="p-4 text-sm text-slate-600 max-w-md truncate" title="${escapeHtml(t.Requirements || '')}">${escapeHtml(t.Requirements || '-')}</td>
-                        <td class="p-4 text-center font-medium text-indigo-600">${t.DailyQuota}</td>
-                        <td class="p-4 text-right">
-                            <button onclick="openModal(${t.TransactionID})" class="text-indigo-600 hover:text-indigo-800 font-medium text-sm transition-colors flex items-center justify-end w-full">
+                        <td class="p-4 font-medium text-zinc-100">${escapeHtml(t.TransactionName)}</td>
+                        <td class="p-4 text-sm text-zinc-400 max-w-md truncate" title="${escapeHtml(t.Requirements || '')}">${escapeHtml(t.Requirements || '-')}</td>
+                        <td class="p-4 text-center font-medium text-[#D4AF37]">${t.DailyQuota}</td>
+                        <td class="p-4 text-right flex items-center justify-end space-x-3">
+                            <button onclick="openModal(${t.TransactionID})" class="text-[#D4AF37] hover:text-[#E9C868] font-medium text-sm transition-colors flex items-center">
                                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
                                 Edit
+                            </button>
+                            <button onclick="deleteTransaction(${t.TransactionID})" class="text-red-400 hover:text-red-300 font-medium text-sm transition-colors flex items-center">
+                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                Delete
                             </button>
                         </td>
                     `;
                     tbody.appendChild(tr);
                 });
             } else {
-                tbody.innerHTML = '<tr><td colspan="4" class="p-4 text-sm text-red-500 text-center">Failed to load transactions.</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="4" class="p-4 text-sm text-red-400 text-center">Failed to load transactions.</td></tr>';
             }
         }
 
@@ -136,7 +140,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Admin') {
             const modalContent = document.getElementById('modalContent');
             const title = document.getElementById('modalTitle');
             const form = document.getElementById('transactionForm');
-            
+
             form.reset();
             document.getElementById('transactionId').value = '';
 
@@ -165,10 +169,10 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Admin') {
         function closeModal() {
             const modal = document.getElementById('transactionModal');
             const modalContent = document.getElementById('modalContent');
-            
+
             modal.classList.add('opacity-0');
             modalContent.classList.add('scale-95');
-            
+
             setTimeout(() => {
                 modal.classList.add('hidden');
             }, 300);
@@ -192,6 +196,20 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Admin') {
                 loadTransactions();
             } else {
                 showToast(res?.error || 'An error occurred', 'error');
+            }
+        }
+
+        async function deleteTransaction(id) {
+            if (!confirm('Are you sure you want to delete this transaction type?\n\nWARNING: This will also permanently delete all appointments associated with this transaction type!')) {
+                return;
+            }
+
+            const res = await apiCall('transactions.php?action=delete', 'POST', { id });
+            if (res && res.success) {
+                showToast('Transaction successfully deleted');
+                loadTransactions();
+            } else {
+                showToast(res?.error || 'Failed to delete transaction', 'error');
             }
         }
     </script>
