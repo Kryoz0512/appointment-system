@@ -107,7 +107,6 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Admin') {
                     const tr = document.createElement('tr');
                     tr.className = 'hover:bg-zinc-700/50 transition-colors';
                     tr.innerHTML = `
-<<<<<<< HEAD
                         <td class="p-4 font-medium text-zinc-100">${escapeHtml(t.TransactionName)}</td>
                         <td class="p-4 text-sm text-zinc-400 max-w-md truncate" title="${escapeHtml(t.Requirements || '')}">${escapeHtml(t.Requirements || '-')}</td>
                         <td class="p-4 text-center font-medium text-[#D4AF37]">${t.DailyQuota}</td>
@@ -117,17 +116,6 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Admin') {
                                 Edit
                             </button>
                             <button onclick="deleteTransaction(${t.TransactionID})" class="text-red-400 hover:text-red-300 font-medium text-sm transition-colors flex items-center">
-=======
-                        <td class="p-4 font-medium text-slate-800">${escapeHtml(t.TransactionName)}</td>
-                        <td class="p-4 text-sm text-slate-600 max-w-md truncate" title="${escapeHtml(t.Requirements || '')}">${escapeHtml(t.Requirements || '-')}</td>
-                        <td class="p-4 text-center font-medium text-indigo-600">${t.DailyQuota}</td>
-                        <td class="p-4 text-right flex items-center justify-end space-x-3">
-                            <button onclick="openModal(${t.TransactionID})" class="text-indigo-600 hover:text-indigo-800 font-medium text-sm transition-colors flex items-center">
-                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
-                                Edit
-                            </button>
-                            <button onclick="deleteTransaction(${t.TransactionID})" class="text-red-500 hover:text-red-700 font-medium text-sm transition-colors flex items-center">
->>>>>>> c3625cdfddc9658ac19c4c51d8d978e903a44877
                                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
                                 Delete
                             </button>
